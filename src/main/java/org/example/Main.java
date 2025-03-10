@@ -1,4 +1,5 @@
 package org.example;
+import java.util.Arrays;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -69,38 +70,51 @@ public class Main {
 
         // Exercice : Nombre mystère
 
-        Random random = new Random();
-        int nombreMystere = random.nextInt(100);
+//        Random random = new Random();
+//        int nombreMystere = random.nextInt(100);
+//
+//        Scanner scanner = new Scanner(System.in);
+//
+//        int totalTentatives = 7;
+//        int tentativeRestante = totalTentatives;
+//        int nombreSaisi;
 
-        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Devinez le nombre entre 1 et 100");
+//
+//        while (tentativeRestante > 0) {
+//            int tentativeActuelle = totalTentatives - tentativeRestante + 1;
+//            System.out.print("Tentative " + tentativeActuelle + " sur " + totalTentatives + " - Entrez un nombre : ");
+//            nombreSaisi = scanner.nextInt();
+//            tentativeRestante--;
+//
+//            if (nombreSaisi > nombreMystere) {
+//                System.out.println("Le nombre est plus petit.");
+//            } else if (nombreSaisi < nombreMystere) {
+//                System.out.println("Le nombre est plus grand.");
+//            } else {
+//                System.out.println("Bravo ! Le nombre mystère est " + nombreMystere +
+//                        ". Vous avez trouvé en " + tentativeActuelle + " tentatives !");
+//                scanner.close();
+//                return;
+//            }
+//
+//            if (tentativeRestante == 0) {
+//                System.out.println("Perdu, le nombre mystère était : " + nombreMystere);
+//            }
+//        }
 
-        int totalTentatives = 7;
-        int tentativeRestante = totalTentatives;
-        int nombreSaisi;
 
-        System.out.println("Devinez le nombre entre 1 et 100");
+        int[] tableau1 = {1, 4, 2, 3};
+        int[] tableau2 = {1, 4, 2, 3};
+        int[] tableau3 = {1, 4, 3, 2};
+        int[] tableau4 = {1, 4, 3};
 
-        while (tentativeRestante > 0) {
-            int tentativeActuelle = totalTentatives - tentativeRestante + 1;
-            System.out.print("Tentative " + tentativeActuelle + " sur " + totalTentatives + " - Entrez un nombre : ");
-            nombreSaisi = scanner.nextInt();
-            tentativeRestante--;
+        System.out.println("tableau1 et tableau2 : " + (sontEgaux(tableau1, tableau2) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
+        System.out.println("tableau1 et tableau3 : " + (sontEgaux(tableau1, tableau3) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
+        System.out.println("tableau1 et tableau4 : " + (sontEgaux(tableau1, tableau4) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
+    }
 
-            if (nombreSaisi > nombreMystere) {
-                System.out.println("Le nombre est plus petit.");
-            } else if (nombreSaisi < nombreMystere) {
-                System.out.println("Le nombre est plus grand.");
-            } else {
-                System.out.println("Bravo ! Le nombre mystère est " + nombreMystere +
-                        ". Vous avez trouvé en " + tentativeActuelle + " tentatives !");
-                scanner.close();
-                return;
-            }
-
-            if (tentativeRestante == 0) {
-                System.out.println("Perdu, le nombre mystère était : " + nombreMystere);
-            }
-        }
-
+    public static boolean sontEgaux(int[] tab1, int[] tab2) {
+        return Arrays.equals(tab1, tab2);
     }
 }
