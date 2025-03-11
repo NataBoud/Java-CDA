@@ -103,18 +103,58 @@ public class Main {
 //            }
 //        }
 
+//
+//        int[] tableau1 = {1, 4, 2, 3};
+//        int[] tableau2 = {1, 4, 2, 3};
+//        int[] tableau3 = {1, 4, 3, 2};
+//        int[] tableau4 = {1, 4, 3};
+//
+//        System.out.println("tableau1 et tableau2 : " + (sontEgaux(tableau1, tableau2) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
+//        System.out.println("tableau1 et tableau3 : " + (sontEgaux(tableau1, tableau3) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
+//        System.out.println("tableau1 et tableau4 : " + (sontEgaux(tableau1, tableau4) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
 
-        int[] tableau1 = {1, 4, 2, 3};
-        int[] tableau2 = {1, 4, 2, 3};
-        int[] tableau3 = {1, 4, 3, 2};
-        int[] tableau4 = {1, 4, 3};
+        String texte = "Bla bla bla a a a";
 
-        System.out.println("tableau1 et tableau2 : " + (sontEgaux(tableau1, tableau2) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
-        System.out.println("tableau1 et tableau3 : " + (sontEgaux(tableau1, tableau3) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
-        System.out.println("tableau1 et tableau4 : " + (sontEgaux(tableau1, tableau4) ? "Les tableaux sont égaux" : "Les tableaux ne sont pas égaux"));
+        System.out.println("Avec boucle : " + compteurLettreABoucle(texte));
+        System.out.println("Avec count() : " + compteurLettreACount(texte));
+
+
+    }
+
+    public static int compteurLettreABoucle(String chaine) {
+        int cpt = 0;
+        for (int i = 0; i < chaine.length(); i++) {
+            if (chaine.charAt(i) == 'a' || chaine.charAt(i) == 'A') {
+                cpt++;
+            }
+        }
+        return cpt;
+    }
+
+    public static long compteurLettreACount(String chaine) {
+        return chaine.chars().filter(c -> c == 'a' || c == 'A').count();
+    }
+
+
+
+
+
+    public static boolean sontEgauxAvecEquals(int[] tab1, int[] tab2) {
+        return Arrays.equals(tab1, tab2);
     }
 
     public static boolean sontEgaux(int[] tab1, int[] tab2) {
-        return Arrays.equals(tab1, tab2);
+
+        if (tab1.length != tab2.length) {
+            return false;
+        }
+
+        for (int i = 0; i < tab1.length; i++) {
+            if (tab1[i] != tab2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
+
 }
