@@ -12,9 +12,11 @@ public class Voiture {
     private int autonomie;
     private boolean demaree;
 
+    private static int nbVoiture;
 
 
-    public Voiture (){}
+
+
 
     /**
      * Constructeur de la voiture
@@ -24,10 +26,20 @@ public class Voiture {
      * @param autonomie autonomie de la voiture
      */
     public Voiture (String model,String paramCouleur,int reservoir,int autonomie){
-        this.model = model;
-        couleur = paramCouleur;
+        this(model,paramCouleur);
         this.reservoir = reservoir;
         this.autonomie =autonomie;
+    }
+
+    public Voiture(String model, String couleur) {
+        this();
+        this.model = model;
+        this.couleur = couleur;
+
+    }
+
+    public Voiture (){
+        nbVoiture++;
     }
 
     public void afficher (){
@@ -93,7 +105,12 @@ public class Voiture {
         this.demaree = demaree;
     }
 
-/*    public String toString(){
+    public static int getNbVoiture() {
+        return nbVoiture;
+    }
+
+
+    /*    public String toString(){
         return "Ma voiture et une : "+model+
                 "de couleur "+couleur+"avec un reservoir de "+reservoir +"litre et une autonomie de"+autonomie+"heure";
     }*/
@@ -106,6 +123,7 @@ public class Voiture {
                 ", reservoir=" + reservoir +
                 ", autonomie=" + autonomie +
                 ", demaree=" + demaree +
+                "nombre de voiture : " + nbVoiture +
                 '}';
     }
 
