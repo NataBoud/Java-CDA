@@ -39,13 +39,7 @@ public class GestionPaiements {
 
         double montant = -1;
 
-        while (montant <= 0) {
-            System.out.print("Entrez le montant du paiement : ");
-            montant = scanner.nextDouble();
-            if (montant <= 0) {
-                System.out.println("Erreur : Le montant doit être positif.");
-            }
-        }
+
         System.out.println(paiement.effectuerPaiement(montant));
 
 

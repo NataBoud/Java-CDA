@@ -19,11 +19,15 @@ public class CarteDeCredit implements Paiement {
 
     @Override
     public String effectuerPaiement(double montant) {
-        if (montant > 0) {
-            return "Paiement de " + montant + "€ effectué avec succès par Carte de Crédit (" + numeroCarte + ").";
-
+        while (montant <= 0) {
+            System.out.print("Entrez le montant du paiement : ");
+            Scanner scanner = new Scanner(System.in);
+            montant = scanner.nextDouble();
+            if (montant <= 0) {
+                System.out.println("Erreur : Le montant doit être positif.");
+            }
         }
-        return "Erreur : Le montant doit être positif.";
+        return "Paiement de " + montant + "€ effectué avec succès via carte de credit " + numeroCarte + ".";
     }
 
     // créer une carte via le terminal
