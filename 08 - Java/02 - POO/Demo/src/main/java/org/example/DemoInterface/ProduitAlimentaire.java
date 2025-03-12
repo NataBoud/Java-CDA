@@ -8,6 +8,6 @@ public class ProduitAlimentaire extends Produit implements Defaillant {
 
     @Override
     public void defaillant() {
-        
+
     }
 }

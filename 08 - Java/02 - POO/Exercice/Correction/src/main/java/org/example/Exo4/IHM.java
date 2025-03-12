@@ -18,21 +18,29 @@ public class IHM {
     public void start (){
         String entry;
 
-        while (true){
+/*        while (true){
             afficheMenu();
             entry = scanner.nextLine();
             switch (entry){
                 case "1" -> listerLesCompte();
-                case "2" -> ;
-                case "3" -> ;
-                case "4" -> ;
-                case "5" -> ;
+                case "2" -> {
+                    return;
+                }
+                case "3" -> {
+                    return; ;
+                }
+                case "4" -> {
+                    return; ;
+                }
+                case "5" -> {
+                    return; ;
+                }
                 default -> {
                     return;
                 }
 
             }
-        }
+        }*/
 
     }
 
