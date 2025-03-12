@@ -1,7 +1,7 @@
-package org.example.exo5payment;
+package org.example.Exo5InterfacePayment;
 
-import org.example.exo5payment.paiement.CarteDeCredit;
-import org.example.exo5payment.paiement.PayPal;
+import org.example.Exo5InterfacePayment.paiement.CarteDeCredit;
+import org.example.Exo5InterfacePayment.paiement.PayPal;
 
 import java.util.Scanner;
 

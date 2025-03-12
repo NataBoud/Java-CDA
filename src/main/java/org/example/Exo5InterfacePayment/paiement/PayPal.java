@@ -1,6 +1,6 @@
-package org.example.exo5payment.paiement;
+package org.example.Exo5InterfacePayment.paiement;
 
-import org.example.exo5payment.Paiement;
+import org.example.Exo5InterfacePayment.Paiement;
 
 import java.util.Scanner;
 
