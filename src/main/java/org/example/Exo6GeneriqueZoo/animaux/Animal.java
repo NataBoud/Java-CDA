@@ -1,16 +1,37 @@
 package org.example.Exo6GeneriqueZoo.animaux;
 
 public abstract class Animal {
+    protected String nom;
+    protected int age;
 
-    public void manger() {
-        System.out.println("L'animal mange.");
+    public Animal(String nom, int age) {
+        this.nom = nom;
+        this.age = age;
     }
 
-    public void dormir() {
-        System.out.println("L'animal dort.");
+    public String getNom() {
+        return nom;
     }
 
-    public void faireDuBruit(){
-        System.out.println("L'animal fait du bruit.");
-    };
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public abstract void manger();
+    public abstract void dormir();
+    public abstract void faireDuBruit();
+
+    @Override
+    public String toString() {
+        return String.format("%s %dan%s", nom, age, (age > 1 ? "s": ""));
+    }
+
 }

@@ -3,9 +3,10 @@ package org.example.Exo6GeneriqueZoo;
 import org.example.Exo6GeneriqueZoo.animaux.Animal;
 
 public class Enclos<T> {
-    private T[] animaux;
+    private final T[] animaux;
     private int nbAnimaux = 0;
 
+    @SuppressWarnings("unchecked")
     public Enclos(int taille) {
         animaux = (T[]) new Animal[taille]; // Initialisation du tableau avec la taille définie
     }

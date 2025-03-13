@@ -1,31 +1,55 @@
 package org.example.Exo6GeneriqueZoo.animaux;
 
 public class Lion extends Animal {
-    private String nom;
-    private int age;
-
     public Lion(String nom, int age) {
-        this.nom = nom;
-        this.age = age;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getAge() {
-        return age;
+        super(nom, age);
     }
 
     @Override
-    public String toString() {
-        return "Lion{" +
-                "nom='" + nom + '\'' +
-                ", age=" + age +
-                '}';
+    public void manger() {
+        System.out.printf("""
+                %s à manger
+                   .~ ~ ~.
+                 (  o,,,o  )
+                (   ). .(   )
+                 \\  { v }  /
+                   ~ `v' ~
+                """, nom);
+    }
+
+    @Override
+    public void dormir() {
+        System.out.printf("""
+                    Z   %s s'est endormi
+                  Z     @|\\@@
+                    z  -  @@@@
+                      /7   @@@@
+                     /    @@@@@@
+                     \\-' @@@@@@@@`-_______________
+                      -@@@@@@@@@             /    \\
+                 _______/    /_       ______/      |__________-
+                /,__________/  `-.___/,_____________----------_)
+                """, nom);
+    }
+
+    @Override
+    public void faireDuBruit() {
+        System.out.printf("""
+                %s à rugi
+                                .,  ,.                       ,.
+                              ,((')/))).                    (()
+                             '(.(()( )")),                ((())
+                           "___/,  "/)))/).'               .))
+                           '.-.   "(()(()()/^             ( (
+                 >> ROAR << ' _)   /)()())(()'______.---._.' )
+                             '.   _  (()(()))..            ,'
+                               (() \\  ()) ())(             )
+                                   ((                .     /_
+                                   /       \\,     .-(     (_ )
+                                 .'   \\/    )___.'   \\      )
+                                /    \\-    /        _/'.-'  /
+                               (,(,.'     ))       (_ /    /
+                                  (,(,(,_)         (,(,(,_)
+                """, nom);
     }
 }
