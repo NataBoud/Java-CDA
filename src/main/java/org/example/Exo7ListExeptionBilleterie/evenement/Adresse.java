@@ -27,8 +27,6 @@ public class Adresse {
 
     @Override
     public String toString() {
-        return "Adresse : " +
-                "rue:" + rue  +
-                ", ville:" + ville;
+        return "Adresse : " + rue  + ville;
     }
 }

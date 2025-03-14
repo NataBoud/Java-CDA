@@ -8,6 +8,8 @@ import java.util.List;
 
 public class FakeData {
     public static List<Evenement> getEvenements() {
+
+        // Liste inmodifiable
         // Création des adresses
         Adresse adresseClient1 = new Adresse("1 Rue de Paris", "Paris");
         Adresse adresseClient2 = new Adresse("2 Rue de Lyon", "Lyon");

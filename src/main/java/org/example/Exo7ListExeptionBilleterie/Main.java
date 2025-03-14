@@ -5,15 +5,19 @@ import org.example.Exo7ListExeptionBilleterie.fakeData.FakeData;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    static List<Evenement> listeEvenements = FakeData.getEvenements();
+
+    // Vu que dans FakeData.getEvenements() la list d'événements est fixe — immuable,
+    // il faut passer par la création d'une nouvelle liste avec new ArrayList<>()
+    static List<Evenement> listeEvenements = new ArrayList<>(FakeData.getEvenements());
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
 
         // Un client fictif
         Adresse adresseClient1 = new Adresse("1 Rue de Paris", "Paris");
@@ -63,9 +67,9 @@ public class Main {
                 case 2:
                     creerNouvelEvenement(scanner);
                     break;
-//                case 3:
-//                    supprimerEvenement(scanner, listeEvenements);
-//                    break;
+                case 3:
+                    supprimerEvenement(scanner, listeEvenements);
+                    break;
 //                case 4:
 //                    afficherToutesReservations(listeEvenements);
 //                    break;
@@ -77,74 +81,109 @@ public class Main {
         }
     }
 
-
-    // ===================== METHODES ADMIN =====================
+    // **************** METHODES ADMIN ****************
+    // Affichage des événements
     // Affichage des événements
     private static void afficherEvenements(List<Evenement> listeEvenements) {
         System.out.println("===================== Événements disponibles =====================");
         for (Evenement evenement : listeEvenements) {
-            System.out.println(evenement.getNom() + " - " + evenement.getLieu().getVille());
-            System.out.println("Date: " + evenement.getDate() + " à " + evenement.getHeure());
-            System.out.println("Billets:");
-            for (Billet billet : evenement.getBillets()) {
-                System.out.println("  - Billet #" + billet.getNumeroPlace() + " - Client: "
-                        + billet.getClient().getNom() + " " + billet.getClient().getPrenom()
-                        + " - Type: " + billet.getTypePlace());
+            if (evenement.getLieu() != null) {
+                System.out.println(evenement.getNom() + " - " + evenement.getLieu().getVille());
+                System.out.println("Date: " + evenement.getDate() + " à " + evenement.getHeure());
+                System.out.println("Billets:");
+                for (Billet billet : evenement.getBillets()) {
+                    System.out.println("  - Billet #" + billet.getNumeroPlace() + " - Client: "
+                            + billet.getClient().getNom() + " " + billet.getClient().getPrenom()
+                            + " - Type: " + billet.getTypePlace());
+                }
+                System.out.println();
+            } else {
+                System.out.println("Lieu non défini pour l'événement " + evenement.getNom());
             }
-            System.out.println();
         }
     }
 
-    private static void creerNouvelEvenement(Scanner scanner) {
-//        System.out.println("--------------- Création d'un Nouvel Événement ---------------");
-//
-//        System.out.print("Nom de l'événement : ");
-//        String nom = scanner.nextLine();
-//
-//        // Demander le lieu
-//        System.out.println("Choisissez le lieu de l'événement : ");
-//        System.out.println("1. Stade");
-//        System.out.println("2. Concert Hall");
-//        System.out.println("3. Théâtre");
-//        System.out.print("Choisir un lieu (1-3) : ");
-//        int choixLieu = scanner.nextInt();
-//        scanner.nextLine(); //
-//        Lieu lieu = null;
-//
-//        // Associer un lieu à l'événement selon le choix de l'admin
-//        switch (choixLieu) {
-//            case 1:
-//                lieu = new Lieu("25 Rue du Stade", "Paris", 50000);
-//                break;
-//            case 2:
-//                lieu = new Lieu("12 Rue du Stade", "Paris", 20000);
-//                break;
-//            case 3:
-//                lieu = new Lieu("Lieu par défaut", "Adresse par défaut", 1000);
-//                break;
-//            default:
-//                System.out.println("Choix invalide");
-//                break;
-//        }
-//        // la date de l'événement
-//        System.out.print("Date de l'événement : ");
-//        String dateStr = scanner.nextLine();
-//        LocalDate date = LocalDate.parse(dateStr);
-//
-//        // l'heure de l'événement
-//        System.out.print("Heure de l'événement : ");
-//        String heure = scanner.nextLine();
-//
-//        // Demander le nombre de places disponibles
-//        System.out.print("Nombre de places disponibles : ");
-//        int nbPlaces = scanner.nextInt();
-//        scanner.nextLine();
 
-//        Evenement nouvelEvenement = new Evenement(nom, lieu, date, heure, nbPlaces );
-        Evenement nouvelEvenement = new Evenement();
+    // Creation d'un événement
+    private static void creerNouvelEvenement(Scanner scanner) {
+        System.out.println("--------------- Création d'un Nouvel Événement ---------------");
+
+        System.out.print("Nom de l'événement : ");
+        String nom = scanner.nextLine();
+
+        // Demander le lieu
+        System.out.println("Choisissez le lieu de l'événement : ");
+        System.out.println("1. Stade");
+        System.out.println("2. Concert Hall");
+        System.out.println("3. Théâtre");
+        System.out.print("Choisir un lieu (1-3) : ");
+        int choixLieu = scanner.nextInt();
+        scanner.nextLine();
+        Lieu lieu = null;
+
+        // Associer un lieu disponible à l'événement selon le choix
+        switch (choixLieu) {
+            case 1:
+                lieu = new Lieu("25 Rue du Stade", "Paris", 50000);
+                break;
+            case 2:
+                lieu = new Lieu("12 Rue du Stade", "Paris", 20000);
+                break;
+            case 3:
+                lieu = new Lieu("50 Avenue de la Musique", "Lyon", 1000);
+                break;
+            default:
+                System.out.println("Choix invalide");
+                break;
+        }
+        // Si le lieu est null, on ne crée pas l'événement et on retourne
+        if (lieu == null) {
+            System.out.println("Le lieu n'a pas été sélectionné correctement. L'événement ne peut pas être créé.");
+            return;
+        }
+        // la date de l'événement
+        System.out.print("Date de l'événement : ");
+        String dateStr = scanner.nextLine();
+        LocalDate date = LocalDate.parse(dateStr);
+
+        // l'heure de l'événement
+        System.out.print("Heure de l'événement : ");
+        String heure = scanner.nextLine();
+
+        // nombre de places disponibles
+        System.out.print("Nombre de places disponibles : ");
+        int nbPlaces = scanner.nextInt();
+        scanner.nextLine();
+
+        Evenement nouvelEvenement = new Evenement(nom, lieu, date, heure, nbPlaces);
         listeEvenements.add(nouvelEvenement);
 
         System.out.println("Événement créé avec succès !");
+        System.out.println("Nom : " + nom);
+        System.out.println("Lieu : " + lieu.getRue() + ", " + lieu.getVille() + " (Capacité : " + lieu.getCapacite() + " places)");
+        System.out.println("Date : " + date + " à " + heure);
+        System.out.println("Nombre de places disponibles : " + nbPlaces);
+    }
+
+    // Suppression d'un événement par le nom
+    private static void supprimerEvenement(Scanner scanner, List<Evenement> listeEvenements) {
+        if (listeEvenements.isEmpty()) {
+            System.out.println("Aucun événement à supprimer.");
+            return;
+        }
+
+        // Demande du nom à supprimer
+        System.out.print("Entrez le nom de l'événement à supprimer : ");
+        String nomASupprimer = scanner.nextLine().trim();
+
+        // Vérification de l'existence et suppression
+        boolean removed = listeEvenements.removeIf(e -> e.getNom().equalsIgnoreCase(nomASupprimer));
+
+        if (removed) {
+            System.out.println("L'événement \"" + nomASupprimer + "\" a été supprimé avec succès.");
+        } else {
+            System.out.println("Aucun événement trouvé avec le nom : " + nomASupprimer);
+        }
     }
 
 
@@ -183,8 +222,7 @@ public class Main {
         }
     }
 
-
-    // ===================== METHODES CLIENT =====================
+    // **************** METHODES CLIENT ****************
     public static void afficherEvenementsAvecPlacesDispo(List<Evenement> listeEvenements) {
         System.out.println("===================== Liste des événements =====================");
         for (Evenement evenement : listeEvenements) {
@@ -297,6 +335,5 @@ public class Main {
             System.out.println("Événement non trouvé.");
         }
     }
-
 
 }
