@@ -24,9 +24,9 @@ public class FakeData {
         Client client3 = new Client("Durand", "Paul", adresseClient3, "0112233445", 40);
 
         // Création des événements
-        Evenement matchFoot = new Evenement("Match de foot", stade, LocalDate.of(2024, 5, 10), "20:00", 50000, null);
-        Evenement concertRock = new Evenement("Concert Rock", concertHall, LocalDate.of(2024, 6, 15), "21:00", 20000, null);
-        Evenement pieceTheatre = new Evenement("Pièce de Théâtre", theatre, LocalDate.of(2024, 7, 20), "19:00", 1000, null);
+        Evenement matchFoot = new Evenement("Match de foot", stade, LocalDate.of(2024, 5, 10), "20:00", 50000);
+        Evenement concertRock = new Evenement("Concert Rock", concertHall, LocalDate.of(2024, 6, 15), "21:00", 20000);
+        Evenement pieceTheatre = new Evenement("Pièce de Théâtre", theatre, LocalDate.of(2024, 7, 20), "19:00", 1000);
 
         // Création des billets en associant les événements
         List<Billet> billetsFoot = List.of(

@@ -1,7 +1,6 @@
-package org.example.Exo7ListExeptionBilleterie.fakeData;
+package org.example.Exo7ListExeptionBilleterie;
 
 
-import org.example.Exo7ListExeptionBilleterie.Client;
 import org.example.Exo7ListExeptionBilleterie.evenement.Billet;
 import org.example.Exo7ListExeptionBilleterie.evenement.Evenement;
 import org.example.Exo7ListExeptionBilleterie.evenement.TypePlace;
@@ -16,7 +15,8 @@ public class GestionReservation {
         if (evenement.getBillets().size() < evenement.getNbPlaces()) {
             int numeroBillet = evenement.getBillets().size() + 1; // Attribution d'un numéro unique de billet
             Billet billet = new Billet(numeroBillet, client, evenement, typePlace);
-            evenement.getBillets().add(billet);
+            evenement.addBillet(billet);
+            client.ajouterBillet(billet);
             System.out.println("Réservation effectuée pour " + client.getNom() + " " + client.getPrenom() + " à l'événement: " + evenement.getNom());
         } else {
             System.out.println("Aucune place disponible pour l'événement: " + evenement.getNom());
@@ -47,8 +47,7 @@ public class GestionReservation {
                 break;
             }
         }
-
-        // Si le billet a été trouvé, on le supprime
+        // Si le billet a été trouvé :
         if (billetASupprimer != null) {
             evenement.getBillets().remove(billetASupprimer);
             client.getBillets().remove(billetASupprimer); // Supprimer le billet de la liste du client

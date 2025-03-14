@@ -16,4 +16,5 @@ public class Lieu extends Adresse {
     public void setCapacite(int capacite) {
         this.capacite = capacite;
     }
+
 }

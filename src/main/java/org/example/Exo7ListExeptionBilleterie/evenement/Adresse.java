@@ -24,4 +24,11 @@ public class Adresse {
     public void setVille(String ville) {
         this.ville = ville;
     }
+
+    @Override
+    public String toString() {
+        return "Adresse : " +
+                "rue:" + rue  +
+                ", ville:" + ville;
+    }
 }

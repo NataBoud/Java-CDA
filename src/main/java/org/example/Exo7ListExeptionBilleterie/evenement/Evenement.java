@@ -10,15 +10,18 @@ public class Evenement {
     private LocalDate date;
     private String heure;
     private int nbPlaces;
-    private List<Billet> billets = new ArrayList<>();
+    private List<Billet> billets;
 
-    public Evenement(String nom, Lieu lieu, LocalDate date, String heure, int nbPlaces, List<Billet> billets) {
+    public Evenement() {
+    }
+
+    public Evenement(String nom, Lieu lieu, LocalDate date, String heure, int nbPlaces) {
         this.nom = nom;
         this.lieu = lieu;
         this.date = date;
         this.heure = heure;
         this.nbPlaces = nbPlaces;
-        this.billets = billets;
+        this.billets = new ArrayList<>();
     }
 
     public String getNom() {
@@ -65,7 +68,15 @@ public class Evenement {
         return billets;
     }
 
-    public void setBillets(List<Billet> billets) {
-        this.billets = billets;
+    public void addBillet(Billet billet) {
+        billets.add(billet);
     }
+
+    public void setBillets(List<Billet> billets) {
+//        this.billets = billets;
+        for(Billet billet : billets) {
+            addBillet(billet);
+        }
+    }
+
 }
