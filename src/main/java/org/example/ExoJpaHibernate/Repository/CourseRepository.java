@@ -1,6 +1,6 @@
-package org.example.ExoHibernate.Repository;
+package org.example.ExoJpaHibernate.Repository;
 
-import org.example.ExoHibernate.Entity.Course;
+import org.example.ExoJpaHibernate.Entity.Course;
 
 import javax.persistence.EntityManager;
 

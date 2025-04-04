@@ -1,18 +1,17 @@
-package org.example.ExoHibernate;
+package org.example.ExoJpaHibernate;
 
-import org.example.ExoHibernate.Entity.Adresse;
-import org.example.ExoHibernate.Entity.Course;
-import org.example.ExoHibernate.Entity.Exam;
-import org.example.ExoHibernate.Entity.Student;
-import org.example.ExoHibernate.Repository.AdresseRepository;
-import org.example.ExoHibernate.Repository.CourseRepository;
-import org.example.ExoHibernate.Repository.ExamRepository;
-import org.example.ExoHibernate.Repository.StudentRepository;
+import org.example.ExoJpaHibernate.Entity.Adresse;
+import org.example.ExoJpaHibernate.Entity.Course;
+import org.example.ExoJpaHibernate.Entity.Exam;
+import org.example.ExoJpaHibernate.Entity.Student;
+import org.example.ExoJpaHibernate.Repository.AdresseRepository;
+import org.example.ExoJpaHibernate.Repository.CourseRepository;
+import org.example.ExoJpaHibernate.Repository.ExamRepository;
+import org.example.ExoJpaHibernate.Repository.StudentRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main2 {

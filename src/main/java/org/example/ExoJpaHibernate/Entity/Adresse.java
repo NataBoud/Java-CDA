@@ -1,4 +1,4 @@
-package org.example.ExoHibernate.Entity;
+package org.example.ExoJpaHibernate.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,22 +7,24 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "adresses")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "exams")
 
-public class Exam {
+public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String subject;
-    private int grade;
+    private String street;
+    private String city;
+    @Column(name = "code_postal")
+    private String codePostal;
 
-    @ManyToOne
-    @JoinColumn(name = "id_student")
+    @OneToOne(mappedBy = "adresse")
     private Student student;
+
 
 }

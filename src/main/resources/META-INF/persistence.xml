@@ -6,10 +6,10 @@
     <persistence-unit name="jpa">
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider </provider>
-        <class>org.example.ExoHibernate.Entity.Student</class>
-        <class>org.example.ExoHibernate.Entity.Adresse</class>
-        <class>org.example.ExoHibernate.Entity.Course</class>
-        <class>org.example.ExoHibernate.Entity.Exam</class>
+        <class>org.example.ExoJpaHibernate.Entity.Student</class>
+        <class>org.example.ExoJpaHibernate.Entity.Adresse</class>
+        <class>org.example.ExoJpaHibernate.Entity.Course</class>
+        <class>org.example.ExoJpaHibernate.Entity.Exam</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

@@ -1,4 +1,4 @@
-package org.example.ExoHibernate.Entity;
+package org.example.ExoJpaHibernate.Entity;
 
 
 import lombok.AllArgsConstructor;
