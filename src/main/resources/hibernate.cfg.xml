@@ -4,11 +4,8 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <mapping class="org.example.ExoHibernate.Entity.Product.Product"/>
-        <mapping class="org.example.ExoHibernate.Entity.Product.ProductElectronic"/>
-        <mapping class="org.example.ExoHibernate.Entity.Product.ProductMode"/>
-        <mapping class="org.example.ExoHibernate.Entity.Product.ProductFood"/>
-        <mapping class="org.example.ExoHibernate.Entity.Order.CustomerOrder"/>
-        <mapping class="org.example.ExoHibernate.Entity.Customer.Customer"/>
+        <mapping class="org.example.ExoHiberante2.entity.Agency"/>
+        <mapping class="org.example.ExoHiberante2.entity.Account"/>
+        <mapping class="org.example.ExoHiberante2.entity.Customer"/>
     </session-factory>
 </hibernate-configuration>
