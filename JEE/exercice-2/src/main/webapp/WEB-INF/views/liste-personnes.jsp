@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="personnes" type="java.util.ArrayList<com.example.exercice2.models.Personne>" scope="request" />
 <html>
 <head>
     <title>Title</title>
