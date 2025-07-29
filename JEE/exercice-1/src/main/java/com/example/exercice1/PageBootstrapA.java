@@ -14,6 +14,6 @@ import java.io.IOException;
 public class PageBootstrapA extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        req.getRequestDispatcher("/views/bootstrap-a.jsp").forward(req,resp);
     }
 }

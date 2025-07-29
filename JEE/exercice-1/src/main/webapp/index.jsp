@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<jsp:include page="WEB-INF/header.jsp" />
+
 <head>
   <title>JSP - Hello World</title>
+  <jsp:include page="WEB-INF/header.jsp" />
 </head>
 
 <body class="container mt-5">
@@ -12,5 +13,6 @@
 <a class="btn btn-secondary mb-2" href="text-brut">Text brut</a><br>
 <a class="btn btn-success mb-2" href="html">HTML</a><br>
 <a class="btn btn-warning mb-2" href="forward">Forward</a>
+<a class="btn btn-warning mb-2" href="bootstrap-a">Bootstrap</a>
 </body>
 </html>
