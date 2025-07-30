@@ -25,14 +25,14 @@ public class CatServlet extends HttpServlet {
 
         List<Cat> cats = (List<Cat>) session.getAttribute("cats");
 
-//        if (cats == null) {
-//            cats = Arrays.asList(
-//                    new Cat("Minette", "Siamois", "Saumon", LocalDate.of(2020, 5, 12)),
-//                    new Cat("Grisou", "Maine Coon", "Poulet", LocalDate.of(2019, 8, 3)),
-//                    new Cat("Luna", "Persan", "Thon", LocalDate.of(2021, 2, 25))
-//            );
-//            session.setAttribute("cats", new ArrayList<>(cats));
-//        }
+        if (cats == null) {
+            cats = Arrays.asList(
+                    new Cat("Minette", "Siamois", "Saumon", LocalDate.of(2020, 5, 12)),
+                    new Cat("Grisou", "Maine Coon", "Poulet", LocalDate.of(2019, 8, 3)),
+                    new Cat("Luna", "Persan", "Thon", LocalDate.of(2021, 2, 25))
+            );
+            session.setAttribute("cats", new ArrayList<>(cats));
+        }
 
         req.setAttribute("cats", session.getAttribute("cats"));
         req.getRequestDispatcher("/WEB-INF/views/cats.jsp").forward(req, resp);

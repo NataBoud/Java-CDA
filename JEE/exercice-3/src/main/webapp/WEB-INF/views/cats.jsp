@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="cats" type="java.util.ArrayList<com.example.exercice3.models.Cat>" scope="request" />
+
 <html>
 <head>
   <title>JSP - Cats</title>
