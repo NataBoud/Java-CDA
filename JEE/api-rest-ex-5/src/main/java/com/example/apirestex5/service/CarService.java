@@ -33,7 +33,7 @@ public class CarService {
     public Car update(UUID id, Car updatedCar) {
         Car existingCar = carStore.get(id);
         if (existingCar != null) {
-            updatedCar.setId(id); // Ensure the ID stays the same
+            updatedCar.setId(id);
             carStore.put(id, updatedCar);
             return updatedCar;
         }
