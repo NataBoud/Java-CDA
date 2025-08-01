@@ -14,13 +14,6 @@
 
 </body>
 </html>
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrateur
-  Date: 30/07/2025
-  Time: 16:01
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><jsp:useBean id="dogList" type="java.util.ArrayList<com.example.exercice4.model.Dog>" scope="request" />
 
