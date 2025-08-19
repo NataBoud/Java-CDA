@@ -40,16 +40,15 @@ public class Film {
     private Realisateur realisateur;
 
     public FilmResponseDto entityToDto() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return FilmResponseDto.builder()
-                .id(id)
-                .nom(nom)
+                .id(getId())
+                .nom(getNom())
                 .dateSortieStr(dtf.format(dateSortie))
-                .description(description)
-                .duree(duree)
-                .genre(genre.name())
-                .realisateurId(realisateur != null ? realisateur.getId() : null)
-                .realisateur(realisateur)
+                .description(getDescription())
+                .duree(getDuree())
+                .genre(String.valueOf(getGenre()))
+                .realisateur(getRealisateur().entityToDto())
                 .build();
     }
 

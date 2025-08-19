@@ -5,12 +5,15 @@ import com.example.cinematheque.dto.FilmResponseDto;
 import com.example.cinematheque.dto.RealisateurReceiveDto;
 import com.example.cinematheque.dto.RealisateurResponseDto;
 import com.example.cinematheque.entity.Film;
+import com.example.cinematheque.entity.Genre;
 import com.example.cinematheque.entity.Realisateur;
 import com.example.cinematheque.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 import com.example.cinematheque.repository.FilmRepository;
 import com.example.cinematheque.repository.RealisateurRepository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +30,9 @@ public class CinemaService {
 
     // ========================= FILMS =========================
 
-    // CREATE
+    // Creation d'un film
     public FilmResponseDto create(FilmReceiveDto filmReceiveDto) {
-        return filmRepository.save(filmReceiveDto.dtoToFilm()).entityToDto();
+        return filmRepository.save(dtoToEntity(filmReceiveDto)).entityToDto();
     }
 
     // Récupérer tous les films
@@ -73,5 +76,19 @@ public class CinemaService {
     public Realisateur getRealisateurById(Long id) {
         return realisateurRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
+    }
+
+    private Film dtoToEntity (FilmReceiveDto receiveDto){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return Film.builder()
+                .nom(receiveDto.getNom())
+                .dateSortie(LocalDate.parse(receiveDto.getDateSortieStr(),formatter))
+                .description(receiveDto.getDescription())
+                .duree(receiveDto.getDuree())
+                .genre(Genre.valueOf(receiveDto.getGenre().toUpperCase()))
+                .realisateur(realisateurRepository
+                        .findById(receiveDto.getRealisateurId())
+                        .orElseThrow(NotFoundException::new))
+                .build();
     }
 }

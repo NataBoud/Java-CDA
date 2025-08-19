@@ -1,6 +1,5 @@
 package com.example.cinematheque.dto;
 
-import com.example.cinematheque.entity.Realisateur;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +16,5 @@ public class FilmResponseDto {
     private String description;
     private int duree;
     private String genre;
-    private Long realisateurId;
-    private Realisateur realisateur;
+    private RealisateurResponseDto realisateur;
 }

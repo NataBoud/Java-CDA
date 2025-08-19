@@ -38,11 +38,10 @@ public class Realisateur {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         return RealisateurResponseDto.builder()
-                .id(id)
-                .nom(nom)
-                .dateNaissanceStr(dateNaissance != null ? dtf.format(dateNaissance) : null)
-                .nationalite(nationalite)
-                .films(films)
+                .id(getId())
+                .nom(getNom())
+                .dateNaissanceStr(dtf.format(getDateNaissance()))
+                .nationalite(getNationalite())
                 .build();
     }
 
