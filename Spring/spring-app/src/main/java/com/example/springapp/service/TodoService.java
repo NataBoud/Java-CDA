@@ -57,6 +57,12 @@ public class TodoService {
         todoRepository.deleteById(id);
     }
 
+    public TodoResponseDto changeStatus(long id) {
+        Todo todoFound = todoRepository.findById(id).orElseThrow(NotFoundException::new);
+        todoFound.setDone(!todoFound.isDone());
+        return todoRepository.save(todoFound).entityToDto();
+    }
+
     // GET VALIDATED TODOS
     public List<TodoResponseDto> getByDone(boolean done) {
         return todoRepository.findByDone(done)

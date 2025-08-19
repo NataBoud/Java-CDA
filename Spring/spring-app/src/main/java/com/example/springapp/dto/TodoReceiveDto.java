@@ -17,7 +17,6 @@ public class TodoReceiveDto {
     private String title;
     private String description;
     private String dateStr;
-    private boolean done;
 
     public Todo dtoToEntity() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -25,7 +24,7 @@ public class TodoReceiveDto {
                 .title(title)
                 .description(description)
                 .date(LocalDate.parse(dateStr, dtf))
-                .done(done)
+                .done(false)
                 .build();
     }
 }

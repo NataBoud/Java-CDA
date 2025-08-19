@@ -51,4 +51,10 @@ public class TodoController {
     public ResponseEntity<List<TodoResponseDto>> getByDone(@RequestParam boolean done) {
         return ResponseEntity.ok(todoService.getByDone(done));
     }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<TodoResponseDto> changeStatus(@PathVariable long id) {
+        return ResponseEntity.ok(todoService.changeStatus(id));
+    }
+
 }
