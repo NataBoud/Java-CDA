@@ -1,13 +1,14 @@
-package controller;
+package com.example.cinematheque.controller;
 
-import dto.FilmResponseDto;
-import entity.Realisateur;
+import com.example.cinematheque.dto.FilmReceiveDto;
+import com.example.cinematheque.dto.FilmResponseDto;
+import com.example.cinematheque.dto.RealisateurReceiveDto;
+import com.example.cinematheque.dto.RealisateurResponseDto;
+import com.example.cinematheque.entity.Realisateur;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import service.CinemaService;
+import org.springframework.web.bind.annotation.*;
+import com.example.cinematheque.service.CinemaService;
 
 import java.util.List;
 
@@ -23,6 +24,12 @@ public class CinemaController {
 
     // ========================= FILMS =========================
 
+    // create
+    @PostMapping("/films/create")
+    public ResponseEntity<FilmResponseDto> create(@RequestBody FilmReceiveDto filmReceiveDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cinemaService.create(filmReceiveDto));
+    }
+
     // Liste des films
     @GetMapping("/films")
     public ResponseEntity<List<FilmResponseDto>> getAllFilms() {
@@ -37,6 +44,12 @@ public class CinemaController {
     }
 
     // ========================= REALISATEURS =========================
+
+    // create
+    @PostMapping("/realisateur/create")
+    public ResponseEntity<RealisateurResponseDto> create(@RequestBody RealisateurReceiveDto realisateurReceiveDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cinemaService.create(realisateurReceiveDto));
+    }
 
     // Liste des réalisateurs
     @GetMapping("/realisateurs")

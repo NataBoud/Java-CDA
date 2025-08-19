@@ -1,6 +1,6 @@
-package entity;
+package com.example.cinematheque.entity;
 
-import dto.FilmResponseDto;
+import com.example.cinematheque.dto.FilmResponseDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

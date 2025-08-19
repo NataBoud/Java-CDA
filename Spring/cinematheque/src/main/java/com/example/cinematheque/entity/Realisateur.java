@@ -1,4 +1,4 @@
-package entity;
+package com.example.cinematheque.entity;
 
 
 import jakarta.persistence.*;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
-import dto.RealisateurResponseDto;
+import com.example.cinematheque.dto.RealisateurResponseDto;
 import java.time.format.DateTimeFormatter;
 
 @Entity

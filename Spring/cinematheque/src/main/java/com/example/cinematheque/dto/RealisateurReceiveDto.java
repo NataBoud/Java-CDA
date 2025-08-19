@@ -1,6 +1,6 @@
-package dto;
+package com.example.cinematheque.dto;
 
-import entity.Realisateur;
+import com.example.cinematheque.entity.Realisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 public class RealisateurReceiveDto {
     private String nom;
-    private String prenom;
     private String dateNaissanceStr;
     private String nationalite;
 

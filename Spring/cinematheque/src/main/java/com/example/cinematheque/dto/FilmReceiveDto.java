@@ -1,7 +1,7 @@
-package dto;
+package com.example.cinematheque.dto;
 
-import entity.Film;
-import entity.Genre;
+import com.example.cinematheque.entity.Film;
+import com.example.cinematheque.entity.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

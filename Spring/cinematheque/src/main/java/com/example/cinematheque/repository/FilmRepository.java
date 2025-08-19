@@ -1,8 +1,8 @@
-package repository;
+package com.example.cinematheque.repository;
 
-import entity.Film;
-import entity.Genre;
-import entity.Realisateur;
+import com.example.cinematheque.entity.Film;
+import com.example.cinematheque.entity.Genre;
+import com.example.cinematheque.entity.Realisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

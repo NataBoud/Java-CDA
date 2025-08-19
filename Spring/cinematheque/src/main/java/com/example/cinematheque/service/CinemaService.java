@@ -1,12 +1,15 @@
-package service;
+package com.example.cinematheque.service;
 
-import dto.FilmResponseDto;
-import entity.Film;
-import entity.Realisateur;
-import exception.NotFoundException;
+import com.example.cinematheque.dto.FilmReceiveDto;
+import com.example.cinematheque.dto.FilmResponseDto;
+import com.example.cinematheque.dto.RealisateurReceiveDto;
+import com.example.cinematheque.dto.RealisateurResponseDto;
+import com.example.cinematheque.entity.Film;
+import com.example.cinematheque.entity.Realisateur;
+import com.example.cinematheque.exception.NotFoundException;
 import org.springframework.stereotype.Service;
-import repository.FilmRepository;
-import repository.RealisateurRepository;
+import com.example.cinematheque.repository.FilmRepository;
+import com.example.cinematheque.repository.RealisateurRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +26,11 @@ public class CinemaService {
     }
 
     // ========================= FILMS =========================
+
+    // CREATE
+    public FilmResponseDto create(FilmReceiveDto filmReceiveDto) {
+        return filmRepository.save(filmReceiveDto.dtoToFilm()).entityToDto();
+    }
 
     // Récupérer tous les films
     public List<FilmResponseDto> getAllFilms() {
@@ -50,6 +58,11 @@ public class CinemaService {
     }
 
     // ========================= REALISATEURS =========================
+
+    // CREATE
+    public RealisateurResponseDto create(RealisateurReceiveDto realisateurReceiveDto) {
+        return realisateurRepository.save(realisateurReceiveDto.dtoToRealisateur()).entityToDto();
+    }
 
     // Récupérer tous les réalisateurs
     public List<Realisateur> getAllRealisateurs() {

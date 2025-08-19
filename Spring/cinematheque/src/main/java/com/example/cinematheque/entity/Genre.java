@@ -1,4 +1,4 @@
-package entity;
+package com.example.cinematheque.entity;
 
 public enum Genre {
     ACTION,
