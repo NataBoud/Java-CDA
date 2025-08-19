@@ -1,0 +1,13 @@
+package com.example.cinematheque;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CinemathequeApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
