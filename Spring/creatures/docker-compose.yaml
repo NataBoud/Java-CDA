@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql
+    container_name: db_creatures
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: creatures
+    volumes:
+      - local_mysql_creatures:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql-phpmyadmin
+
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin
+    environment:
+      PMA_HOST: db
+    ports:
+      - "80:80"
+    networks:
+      - mysql-phpmyadmin
+volumes:
+  local_mysql_creatures:
+
+networks:
+  mysql-phpmyadmin:
+
+# Pour lancer les containers
+# docker-compose up -d
