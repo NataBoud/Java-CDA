@@ -45,6 +45,7 @@ public class CreatureService {
                 .orElseThrow(NotFoundException::new);
 
         Creature creatureGet = creatureReceiveDto.dtoToEntity();
+
         creatureFound.setName(creatureGet.getName());
         creatureFound.setAge(creatureGet.getAge());
         creatureFound.setWeight(creatureGet.getWeight());

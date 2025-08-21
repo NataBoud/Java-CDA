@@ -7,6 +7,8 @@ import com.example.creatures.service.CreatureService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,6 @@ public class CreatureController {
         return ResponseEntity.status(HttpStatus.CREATED).body(creatureService.create(creatureReceiveDto));
     }
 
-
     // GET /api/creatures → récupérer toutes les créatures
     @GetMapping
     public ResponseEntity<List<CreatureResponseDto>> getAll() {
@@ -38,8 +39,10 @@ public class CreatureController {
 
     // PUT /api/creatures/{id} → mettre à jour une créature
     @PutMapping("/{id}")
-    public ResponseEntity<CreatureResponseDto> update(@PathVariable long id,
-                                                      @RequestBody CreatureReceiveDto creatureReceiveDto) {
+    public ResponseEntity<CreatureResponseDto> update(
+        @PathVariable long id,
+        @RequestBody CreatureReceiveDto creatureReceiveDto)
+    {
         return ResponseEntity.ok(creatureService.update(id, creatureReceiveDto));
     }
 
@@ -52,9 +55,20 @@ public class CreatureController {
 
     // GET /api/creatures/paged?page=0&size=5 → récupérer les créatures avec pagination
     @GetMapping("/paged")
-    public Page<Creature> getPage(@RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "5") int size) {
-        return creatureService.getPage(PageRequest.of(page, size));
+    public Page<Creature> getPage(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id,asc") String sort
+    ) {
+        String[] sortParams = sort.split(",");
+        String sortField = sortParams[0];
+        Sort.Direction direction = sortParams.length > 1 && sortParams[1].equalsIgnoreCase("desc")
+                ? Sort.Direction.DESC
+                : Sort.Direction.ASC;
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortField));
+
+        return creatureService.getPage(pageable);
     }
     
 }

@@ -20,17 +20,18 @@ public class DataLoader {
     CommandLineRunner initDatabase(CreatureRepository creatureRepository) {
         return args -> {
 
-            IntStream.rangeClosed(1,100).forEach(i -> {
-                Creature creature = Creature.builder()
-                        .name("Creature-" + i)
-                        .age(random.nextInt(100))
-                        .weight(5 + random.nextDouble() * 95)
-                        .dangerous(random.nextBoolean())
-                        .creatureType(CreatureType.values()[random.nextInt(CreatureType.values().length)])
-                        .build();
-
-                creatureRepository.save(creature);
-            });
+//            IntStream.rangeClosed(1,100).forEach(i -> {
+//                Creature creature = Creature.builder()
+//                        .name("Creature-" + i)
+//                        .age(random.nextInt(100))
+//                        .weight(5 + random.nextDouble() * 95)
+//                        .dangerous(random.nextBoolean())
+//                        .creatureType(CreatureType.values()[random.nextInt(CreatureType.values().length)])
+//                        .build();
+//
+//                creatureRepository.save(creature);
+//            });
         };
+
     }
 }

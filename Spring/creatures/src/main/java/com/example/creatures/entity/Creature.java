@@ -1,6 +1,4 @@
 package com.example.creatures.entity;
-
-import com.example.creatures.dto.CreatureReceiveDto;
 import com.example.creatures.dto.CreatureResponseDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
