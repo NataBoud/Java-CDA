@@ -4,7 +4,9 @@ import org.example.DemoException.exception.MontantNegatifException;
 import org.example.DemoException.exception.SoldeInsuffisantException;
 import org.example.DemoException.exception.ValueIsNullException;
 
+import java.time.LocalDate;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -50,7 +52,10 @@ public class Main {
             clavier.close();
         }
 
+
+
         System.out.println("Solde Final "+cp.getSolde());
+
 
     }
 

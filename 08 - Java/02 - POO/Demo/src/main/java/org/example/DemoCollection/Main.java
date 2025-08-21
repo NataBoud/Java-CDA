@@ -17,6 +17,7 @@ public class Main {
 
 
         List<String> listStr = List.of("tomate","fromage","farine");
+//        List<String> listStr = List.of("tomate","fromage","farine",new Customer(12,"toto"),new Customer(12,"tata"));
 
 //        stringList.remove(1);
         stringList.remove("Fromage");

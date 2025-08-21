@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>HomePage</h1>
+
+    <ul>
+        <li th:each="contact : ${contacts}">
+            <a th:href="@{'/detail?' + 'contactName=' + ${contact.getName()}}"  ><span th:text="${contact.getName()}"/></a>
+            <a th:href="@{/search/{contactId}(contactId=${contact.getId()})}" ><span th:text="${contact.getName()}"/></a>
+        </li>
+    </ul>
+</body>
+</html>

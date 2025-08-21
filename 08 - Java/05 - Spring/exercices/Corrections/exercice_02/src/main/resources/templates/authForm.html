@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <span th:replace="~{home :: bootstrapImport}"></span>
+</head>
+<body>
+    <span th:replace="~{home :: navbar}"></span>
+    <form th:action="@{/validate(mode=${mode})}" method="post" th:object="${user}">
+        <input type="text" th:field="*{username}" placeholder="username">
+        <input type="password" th:field="*{password}" placeholder="password">
+        <button>Valider</button>
+    </form>
+</body>
+</html>

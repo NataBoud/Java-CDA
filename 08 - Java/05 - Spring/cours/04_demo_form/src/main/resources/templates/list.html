@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li th:each="contact : ${contacts}">
+        <a th:href="@{/search/{contactId}(contactId=${contact.getId()})}" ><span th:text="${contact.getName()}"/></a>
+        <a th:href="@{/update(contactID=${contact.getId()})}">Modifier</a>
+        <a th:href="@{/delete(contactID=${contact.getId()})}">Supprimer</a>
+    </li>
+</ul>
+</body>
+</html>
